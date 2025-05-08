@@ -5,8 +5,9 @@ public class JogoMinecraft {
         var jogador1 = new JogadorMinecraft("Gilsu");
         var gerador = new Random();
 
-        while(true){
+        while(jogador1.estaVivo()){
             var oQueFazer = 1 + gerador.nextInt(3);
+            var dano = gerador.nextInt(4);
 
             switch(oQueFazer){
                 case 1: jogador1.minerar();
@@ -16,9 +17,13 @@ public class JogoMinecraft {
                 case 3: jogador1.construir();
                     break;
             }
+            if (dano == 0) {
+                jogador1.levarDano();
+            }
             System.out.println(jogador1);
             System.out.println("\n============\n");
             Thread.sleep(5000);
         }
+        System.out.println("GAME OVER");
     }
 }
