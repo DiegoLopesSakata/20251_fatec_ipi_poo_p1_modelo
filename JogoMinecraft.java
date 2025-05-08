@@ -11,6 +11,7 @@ public class JogoMinecraft {
             var oQueFazer2 = 1 + gerador.nextInt(10);
             var dano = gerador.nextInt(4);
             var dano2 = gerador.nextInt(4);
+            var ataque = gerador.nextInt(2);
 
             if(jogador1.estaVivo()){
                 switch(oQueFazer){
@@ -30,6 +31,23 @@ public class JogoMinecraft {
                 System.out.println(jogador1.getNome() + " esta morto!");
             }
             
+            System.out.printf("\n");
+            if(jogador1.estaVivo() && jogador2.estaVivo()){
+                switch(ataque){
+                    case 0: System.out.println(jogador1.getNome() + " atacou o " + jogador2.getNome());
+                        jogador2.levarDano();
+                        break;
+                    case 1: System.out.println(jogador2.getNome() + " atacou o " + jogador1.getNome());
+                        jogador1.levarDano();
+                        break;
+                }
+                if(!jogador1.estaVivo()){
+                    System.out.println("\n" + jogador2.getNome() + " eh o vencedor!");
+                }
+                else if(!jogador2.estaVivo()){
+                    System.out.println("\n" + jogador1.getNome() + " eh o vencedor!");
+                }
+            }
             System.out.printf("\n");
 
             if(jogador2.estaVivo()){
