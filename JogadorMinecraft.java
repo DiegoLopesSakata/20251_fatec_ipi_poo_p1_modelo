@@ -43,6 +43,10 @@ public class JogadorMinecraft {
         return vida > 0;
     }
 
+    public String getNome() {
+        return nome;
+    }
+
     @Override
     public String toString() {
         return String.format(
@@ -51,3 +55,4 @@ public class JogadorMinecraft {
         );
     }
 }
+  
