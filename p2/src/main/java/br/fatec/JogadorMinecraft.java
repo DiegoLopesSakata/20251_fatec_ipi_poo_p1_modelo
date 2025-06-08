@@ -1,13 +1,42 @@
-import java.util.*;
+package br.fatec;
 
+import java.util.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class JogadorMinecraft {
+    private int codigo;
     private String nome;
     private int vida;
     private int blocosColetados;
     private List<String> inventario;
+    private float probConstruir;
+    private float probColetarMadeira;
+    private float probMineirar;
+    private int vitorias;
+    private int derrotas;
 
     public JogadorMinecraft(String nome) {
         this.nome = nome;
+        this.vida = 10;
+        this.blocosColetados = 0;
+        this.inventario = new ArrayList<>();
+    }
+
+    public JogadorMinecraft(int codigo, String nome, float probConstruir, float probColetarMadeira, float probMineirar, int vitorias, int derrotas){
+        this.codigo = codigo;
+        this.nome = nome;
+        this.probConstruir = probConstruir;
+        this.probColetarMadeira = probColetarMadeira;
+        this.probMineirar = probMineirar;
+        this.vitorias = vitorias;
+        this.derrotas = derrotas;
         this.vida = 10;
         this.blocosColetados = 0;
         this.inventario = new ArrayList<>();
@@ -41,10 +70,6 @@ public class JogadorMinecraft {
 
     public boolean estaVivo() {
         return vida > 0;
-    }
-
-    public String getNome() {
-        return nome;
     }
 
     @Override
