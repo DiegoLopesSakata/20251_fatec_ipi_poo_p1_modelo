@@ -43,4 +43,20 @@ public class JogadorMinecraftDAO {
 			ps.execute();
 		}
 	}
+
+    public void probabilidade(JogadorMinecraft jogador, double probConstruir, double probColetarMadeira, double probMinerar) throws Exception{
+		var sql = "UPDATE tb_personagem SET prob_construir=?, prob_coletar_madeira=?, prob_minerar=? WHERE codigo=?";
+
+		try(
+			var conexao = 
+					ConnectionFactory.obterConexao();
+			var ps = conexao.prepareStatement(sql);
+		){
+            ps.setDouble(1, probConstruir);
+			ps.setDouble(2, probColetarMadeira);
+			ps.setDouble(3, probMinerar);
+			ps.setInt(4, jogador.getCodigo());
+			ps.execute();
+		}
+	}
 }

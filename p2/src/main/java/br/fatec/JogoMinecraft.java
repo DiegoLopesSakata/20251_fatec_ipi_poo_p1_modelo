@@ -18,6 +18,15 @@ public class JogoMinecraft {
             var ataque = gerador.nextInt(2);
             
             if(jogadores.get(0).estaVivo()){
+                double probConstruir, probColetarMadeira, probMinerar;
+                do {
+                    probConstruir = (gerador.nextInt(10) + 1) / 10.0;
+                    probColetarMadeira = (gerador.nextInt(10) + 1) / 10.0;
+                    probMinerar = (gerador.nextInt(10) + 1) / 10.0;
+                } while (probConstruir + probColetarMadeira + probMinerar != 1.0);
+
+                dao.probabilidade(jogadores.get(0), probConstruir, probColetarMadeira, probMinerar);
+
                 if(oQueFazer < jogadores.get(0).getProbMineirar() * 100){
                     jogadores.get(0).minerar();
                 }
@@ -38,6 +47,15 @@ public class JogoMinecraft {
 
             System.out.printf("\n");
             if(jogadores.get(1).estaVivo()){
+                double probConstruir, probColetarMadeira, probMinerar;
+                do { 
+                    probConstruir = (gerador.nextInt(10) + 1) / 10.0;
+                    probColetarMadeira = (gerador.nextInt(10) + 1) / 10.0;
+                    probMinerar = (gerador.nextInt(10) + 1) / 10.0;
+                } while (probConstruir + probColetarMadeira + probMinerar != 1.0);
+
+                dao.probabilidade(jogadores.get(1), probConstruir, probColetarMadeira, probMinerar);
+
                 if(oQueFazer2 < jogadores.get(1).getProbMineirar() * 100){
                     jogadores.get(1).minerar();
                 }
