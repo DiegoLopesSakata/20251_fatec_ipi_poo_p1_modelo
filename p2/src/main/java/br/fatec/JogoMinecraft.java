@@ -58,23 +58,30 @@ public class JogoMinecraft {
             System.out.printf("\n");
             
             if(jogadores.get(0).estaVivo() && jogadores.get(1).estaVivo()){
-                switch(ataque){
-                    case 0: System.out.println(jogadores.get(0).getNome() + " atacou o " + jogadores.get(1).getNome());
-                        jogadores.get(1).levarDano();
-                        break;
-                    case 1: System.out.println(jogadores.get(1).getNome() + " atacou o " + jogadores.get(0).getNome());
-                        jogadores.get(0).levarDano();
-                        break;  
+                if(ataque == 0){
+                    System.out.println(jogadores.get(0).getNome() + " atacou o " + jogadores.get(1).getNome());
+                    jogadores.get(1).levarDano();
+                    System.out.println();
                 }
+                else{
+                    System.out.println(jogadores.get(1).getNome() + " atacou o " + jogadores.get(0).getNome());
+                    jogadores.get(0).levarDano();
+                    System.out.println();
+                }
+
                 if(!jogadores.get(0).estaVivo()){
-                    System.out.println("\n" + jogadores.get(1).getNome() + " eh o vencedor!");
+                    System.out.println("\n" + jogadores.get(1).getNome() + " eh o vencedor!\n");
+                    dao.vitoriaDerrota(jogadores.get(0), 0, 1);
+                    dao.vitoriaDerrota(jogadores.get(1), 1, 0);
                 }
                 else if(!jogadores.get(1).estaVivo()){
-                    System.out.println("\n" + jogadores.get(0).getNome() + " eh o vencedor!");
+                    System.out.println("\n" + jogadores.get(0).getNome() + " eh o vencedor!\n");
+                    dao.vitoriaDerrota(jogadores.get(1), 0, 1);
+                    dao.vitoriaDerrota(jogadores.get(0), 1, 0);
                 }
             }
             
-            System.out.println("\n============\n");
+            System.out.println("============\n");
             Thread.sleep(5000);
         }
         System.out.println("GAME OVER");
